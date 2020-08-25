@@ -1,0 +1,358 @@
+<template lang="pug">
+.page-1
+  #container
+  //- img.start-button(src="@|start.png|")
+  .left(o-touchstart="this.data.leftMove = true" o-touchend="this.data.leftMove = false") 左
+  .right(o-touchstart="this.data.rightMove = true" o-touchend="this.data.rightMove = false") 右
+  //- 调试面板
+  .conn-box
+    input(type="text" o-value="this.data.inputValue")
+    input(type="number" o-value="this.data.beishu")
+    span(o-tap="changeValue('position', 'y', 1)") 上
+    span(o-tap="changeValue('position', 'y', -1)") 下
+    span(o-tap="changeValue('position', 'x', -1)") 左
+    span(o-tap="changeValue('position', 'x', 1)") 右
+    span(o-tap="changeValue('position', 'z', -1)") 前
+    span(o-tap="changeValue('position', 'z', 1)") 后
+    span(o-tap="changeValue('rotation', 'y', 0.1)") 左转
+    span(o-tap="changeValue('rotation', 'y', -0.1)") 右转
+    span(o-tap="changeValue('rotation', 'x', 0.1)") 抬头
+    span(o-tap="changeValue('rotation', 'x', -0.1)") 低头
+</template>
+
+<script>
+  var renderer = null
+  var scene = null
+  var camera = null
+  var infoData = [
+    // 第一场景
+    {name: '向左移动后出现字',fileName: '@|664.png|',width: 1324,height: 737,opacity: 100,left: -900,top: 151,index: 0.01},
+    {name: 'niao',fileName: '@|268.png|',width: 199,height: 125,opacity: 100,left: 1198,top: 324,index: 0.01},
+    {name: '长城博览在山西 从战国到明清 历代长城在山西都有遗存 大美太行在山西 浩浩荡荡开天辟地 绵绵延延八百公里 黄河之魂在山西 “天',fileName: '@|642.png|',width: 532,height: 463,opacity: 100,left: 517,top: 145,index: 0.01},
+    {name: '小山',fileName: '@|237.png|',width: 2773,height: 588,opacity: 100,left: 862,top: 162,index: -0.99},
+    {name: 'mon',fileName: '@|mon.png|',width: 13970,height: 750,opacity: 100,left: 30,top: 0,index: -5.5},
+    // 第二场景
+    {name: '202',fileName: '@|202.png|',width: 1524,height: 345,opacity: 100,left: -320,top: 217,index: 150.5},
+    {name: '221',fileName: '@|221.png|',width: 2857,height: 750,opacity: 100,left: -1170,top: 0,index: 150},
+    {name: '237',fileName: '@|237.png|',width: 2773,height: 588,opacity: 100,left: -1438,top: 157,index: 149.5},
+    {name: '641',fileName: '@|mon.png|',width: 13970,height: 750,opacity: 100,left: -2000,top: -100,index: 150},
+    // 其它
+    {name: '95',fileName: '@|95.png|',width: 304,height: 674,opacity: 100,left: 1733,top: 51,index: 149.5},
+    {name: '563',fileName: '@|563.png|',width: 304,height: 674,opacity: 100,left: 15649,top: 37,index: 149.5},
+    {name: '564',fileName: '@|564.png|',width: 304,height: 674,opacity: 100,left: 25491,top: 37,index: 149.5},
+    {name: '631',fileName: '@|631.png|',width: 2539,height: 720,opacity: 100,left: 41971,top: 30,index: 150},
+
+    // 「华夏年轮」 
+    {name: '620',fileName: '@|620.png|',width: 384,height: 544,opacity: 100,left: 39896,top: 7,index: 149.5},
+    // 名字牌
+    {name: '603',fileName: '@|603.png|',width: 94,height: 241,opacity: 100,left: 40141,top: 158,index: 149.5},
+    // FG
+    {name: '602',fileName: '@|602.png|',width: 4482,height: 730,opacity: 100,left: 38515,top: 20,index: 150},
+    // 云
+    {name: '601',fileName: '@|601.png|',width: 3487,height: 619,opacity: 100,left: 39587,top: 131,index: 150},
+    // BG
+    {name: '600',fileName: '@|600.png|',width: 5633,height: 750,opacity: 100,left: 36718,top: 0,index: 150},
+    // 南太行的最高峰
+    {name: '619',fileName: '@|619.png|',width: 384,height: 612,opacity: 100,left: 35671,top: 0,index: 149.5},
+    // 名字牌
+    {name: '586',fileName: '@|586.png|',width: 94,height: 241,opacity: 100,left: 35909,top: 154,index: 149.5},
+    // BG
+    {name: '585',fileName: '@|585.png|',width: 4823,height: 750,opacity: 100,left: 33512,top: 0,index: 150},
+    // 雏形始成于25亿年前
+    {name: '618',fileName: '@|618.png|',width: 385,height: 691,opacity: 100,left: 32975,top: 8,index: 150},
+    // 名字牌
+    {name: '582',fileName: '@|582.png|',width: 94,height: 450,opacity: 100,left: 33209,top: 163,index: 150},
+    // BG
+    {name: '581',fileName: '@|581.png|',width: 2618,height: 750,opacity: 100,left: 31522,top: 0,index: 150},
+    // 「千峰壁立，中通峭峡」 「亘如长虹，横绝天阶」
+    {name: '615',fileName: '@|615.png|',width: 445,height: 733,opacity: 100,left: 29958,top: 8,index: 149.5},
+    // 名字牌
+    {name: '578',fileName: '@|578.png|',width: 94,height: 244,opacity: 100,left: 30252,top: 176,index: 149.5},
+    // FG
+    {name: '577',fileName: '@|577.png|',width: 938,height: 558,opacity: 85,left: 30660,top: 192,index: 150},
+    // 船
+    {name: '576',fileName: '@|576.png|',width: 138,height: 82,opacity: 70,left: 30017,top: 579,index: 150},
+    // 云
+    {name: '575',fileName: '@|575.png|',width: 1623,height: 342,opacity: 100,left: 29604,top: 78,index: 150},
+    // 云
+    {name: '574',fileName: '@|574.png|',width: 1623,height: 261,opacity: 100,left: 28963,top: 0,index: 150},
+    // 鸟
+    {name: '573',fileName: '@|573.png|',width: 672,height: 363,opacity: 100,left: 29446,top: 62,index: 150},
+    // Bg
+    {name: '572',fileName: '@|572.png|',width: 2838,height: 750,opacity: 100,left: 29068,top: 0,index: 150},
+    // 名字牌
+    {name: '569',fileName: '@|569.png|',width: 95,height: 176,opacity: 100,left: 27931,top: 148,index: 149.5},
+    // 赵氏孤儿历史典故 源远流长
+    {name: '614',fileName: '@|614.png|',width: 445,height: 650,opacity: 100,left: 27632,top: 0,index: 149.5},
+    // 藏山FG
+    {name: '568',fileName: '@|568.png|',width: 1228,height: 332,opacity: 100,left: 27012,top: 418,index: 150},
+    // BG
+    {name: '567',fileName: '@|567.png|',width: 5891,height: 750,opacity: 100,left: 24954,top: 0,index: 150},
+    // 名字牌
+    {name: '523',fileName: '@|523.png|',width: 94,height: 316,opacity: 100,left: 23833,top: 145,index: 149.5},
+    //  中国古堡之乡
+    {name: '613',fileName: '@|613.png|',width: 384,height: 573,opacity: 100,left: 23594,top: 0,index: 149.5},
+    // 云
+    {name: '522',fileName: '@|522.png|',width: 1623,height: 249,opacity: 100,left: 24021,top: 34,index: 150},
+    // Fg
+    {name: '521',fileName: '@|521.png|',width: 3346,height: 750,opacity: 100,left: 22372,top: 0,index: 150},
+    // BG
+    {name: '520',fileName: '@|520.png|',width: 3287,height: 349,opacity: 100,left: 22315,top: 0,index: 150},
+    // 名字牌
+    {name: '517',fileName: '@|517.png|',width: 95,height: 257,opacity: 100,left: 21324,top: 154,index: 149.5},
+    // 抗战胜利从这里开始
+    {name: '612',fileName: '@|612.png|',width: 385,height: 687,opacity: 100,left: 21085,top: 0,index: 149.5},
+    // 云 拷贝
+    {name: '516',fileName: '@|516.png|',width: 1623,height: 249,opacity: 100,left: 19888,top: 33,index: 150},
+    // 云
+    {name: '515',fileName: '@|515.png|',width: 1623,height: 249,opacity: 100,left: 21525,top: 136,index: 150},
+    // 平型关关口
+    {name: '513',fileName: '@|513.png|',width: 1113,height: 680,opacity: 100,left: 20540,top: 70,index: 150},
+    // 原创作品2
+    {name: '512',fileName: '@|512.png|',width: 3101,height: 750,opacity: 100,left: 20047,top: 0,index: 150},
+    // 点
+    {name: '511',fileName: '@|511.png|',width: 1019,height: 630,opacity: 100,left: 21361,top: 120,index: 150},
+    // EEEA90C2-3C9F-4FBF-AEC8-E5AFAB0AF766
+    {name: '510',fileName: '@|510.png|',width: 1120,height: 692,opacity: 70,left: 20531,top: 58,index: 150},
+    // 名字牌
+    {name: '506',fileName: '@|506.png|',width: 94,height: 257,opacity: 100,left: 19441,top: 153,index: 149.5},
+    // 长城第九关
+    {name: '611',fileName: '@|611.png|',width: 384,height: 535,opacity: 100,left: 19202,top: 17,index: 149.5},
+    // D6F7824E-8A78-4C64-9679-A83D7AED1FCA 拷贝 2
+    {name: '503',fileName: '@|503.png|',width: 1585,height: 750,opacity: 100,left: 18809,top: 0,index: 149.5},
+    // BG
+    {name: '501',fileName: '@|501.png|',width: 2384,height: 327,opacity: 100,left: 18713,top: 77,index: 150},
+    // 名字牌
+    {name: '498',fileName: '@|498.png|',width: 94,height: 257,opacity: 100,left: 17711,top: 156,index: 149.5},
+    // 「中华第一关」
+    {name: '610',fileName: '@|610.png|',width: 384,height: 582,opacity: 100,left: 17462,top: 0,index: 149.5},
+    // 云
+    {name: '497',fileName: '@|497.png|',width: 1082,height: 166,opacity: 100,left: 17112,top: 267,index: 150},
+    // 云
+    {name: '496',fileName: '@|496.png|',width: 1623,height: 249,opacity: 100,left: 15836,top: 0,index: 150},
+    // D0002BE6-ACC0-4857-AE1C-8A759A9CCAC3
+    {name: '494',fileName: '@|494.png|',width: 1319,height: 739,opacity: 100,left: 17343,top: 11,index: 150},
+    // 矩形 3
+    {name: '493',fileName: '@|493.png|',width: 4806,height: 750,opacity: 100,left: 15091,top: 0,index: 150},
+    // 名字牌
+    {name: '453',fileName: '@|453.png|',width: 94,height: 257,opacity: 100,left: 13597,top: 148,index: 149.5},
+    // 欲穷千里目 更上一层楼
+    {name: '609',fileName: '@|609.png|',width: 445,height: 535,opacity: 100,left: 13291,top: 0,index: 149.5},
+    // FG
+    {name: '454',fileName: '@|454.png|',width: 1064,height: 750,opacity: 100,left: 14523,top: 0,index: 150},
+    // 船
+    {name: '458',fileName: '@|458.png|',width: 231,height: 114,opacity: 100,left: 12177,top: 382,index: 150},
+    // BG
+    {name: '479',fileName: '@|479.png|',width: 5225,height: 750,opacity: 100,left: 10239,top: 0,index: 150},
+    // 世界第一大 黄色瀑布
+    {name: '608',fileName: '@|608.png|',width: 444,height: 535,opacity: 100,left: 10849,top: 244,index: 149.5},
+    // FG
+    {name: '28',fileName: '@|28.png|',width: 1120,height: 688,opacity: 100,left: 10664,top: 62,index: 149.5},
+    // 鸟
+    {name: '23',fileName: '@|23.png|',width: 1262,height: 542,opacity: 100,left: 8806,top: 78,index: 150},
+    // BG
+    {name: '485',fileName: '@|485.png|',width: 2722,height: 750,opacity: 100,left: 9214,top: 0,index: 150},
+    // 名字牌
+    {name: '168',fileName: '@|168.png|',width: 94,height: 257,opacity: 100,left: 7009,top: 271,index: 149.5},
+    // 「活着的古镇」
+    {name: '607',fileName: '@|607.png|',width: 384,height: 582,opacity: 100,left: 6763,top: 113,index: 149.5},
+    // 碛口古镇前景
+    {name: '145',fileName: '@|145.png|',width: 2243,height: 750,opacity: 100,left: 6250,top: 0,index: 150},
+    // 碛口古镇山BG
+    {name: '147',fileName: '@|147.png|',width: 6643,height: 750,opacity: 100,left: 3663,top: 0,index: 150},
+    // 名字牌
+    {name: '379',fileName: '@|379.png|',width: 94,height: 353,opacity: 100,left: 3089,top: 117,index: 149.5},
+    // 黄河流入山西的 第一站
+    {name: '664',fileName: '@|text-1.png|',width: 413,height: 574,opacity: 100,left: 2799,top: 0,index: 149.5},
+    // 云
+    {name: '374',fileName: '@|374.png|',width: 3218,height: 468,opacity: 100,left: 2059,top: 0,index: 150},
+    // 前景
+    {name: '388',fileName: '@|388.png|',width: 2725,height: 750,opacity: 100,left: 664,top: 0,index: 150},
+    // BG
+    {name: '390',fileName: '@|390.png|',width: 6192,height: 750,opacity: 100,left: 1552,top: 0,index: 150},
+  ]
+  module.exports = {
+    data: {
+      beishu: 10,
+      leftMove: false,
+      rightMove: false
+    },
+    created: function () {
+      this.init()
+      setTimeout(() => {
+        new TimelineMax().to(scene.getObjectByName('niao').material, 3, {opacity: 0}, 0)
+        .to(scene.getObjectByName('niao').position, 3, {bezier:[{x: 46, y: -22, z: -46}, {x: 26, y: -5, z: -46}]}, 0)
+        .to(camera.position, 5, {bezier:[{x: -20, y: -33, z: -245}]}, 1)
+        // new TimelineMax().to(camera.position, 3, {bezier:[{z: -20}]}, 0)
+      }, 2000);
+    },
+    init: function () {
+      var container = document.getElementById('container');
+      // 设立相机
+      camera = new THREE.PerspectiveCamera( 75, window.innerWidth >  window.innerHeight ? (window.innerWidth / window.innerHeight) : (window.innerHeight / window.innerWidth), 0.1, 300 );
+      camera.position.set(80, -35, 65)
+      // camera.lookAt(80, -35, 0)
+      // 建立一个场景
+      scene = new THREE.Scene();
+      scene.fog = new THREE.Fog( 0xffffff, 100, 300)
+      // 设置图片背景
+      // 创建一个纹理图片加载器加载图片
+      var textureLoader = new THREE.TextureLoader();
+      // 加载背景图片
+      var texture = textureLoader.load('@|bg.jpg|');
+      scene.background = texture
+      
+      // 像素级的渲染，渲染效果更好
+      renderer = new THREE.WebGLRenderer({
+        // antialias: true,
+        depthTest: false
+      });
+      renderer.sortObjects = true;
+      renderer.setClearColor(0xfffefb, 1.0);
+      renderer.setPixelRatio( window.devicePixelRatio );
+      if (window.innerWidth >  window.innerHeight) renderer.setSize( window.innerWidth, window.innerHeight )
+      else {renderer.setSize( window.innerHeight, window.innerWidth)}
+      container.appendChild( renderer.domElement );
+
+      // renderer.outputEncoding = THREE.sRGBEncoding;
+      // renderer.toneMapping = THREE.ACESFilmicToneMapping;
+
+      var pmremGenerator = new THREE.PMREMGenerator( renderer );
+      // pmremGenerator.compileEquirectangularShader();
+
+      window.addEventListener( 'resize', this.onWindowResize, false );
+
+      renderer.setAnimationLoop( render );
+
+      
+      // renderer.sortObjects = true;
+      // 添加光线
+      // var ambientLight = new THREE.AmbientLight(0xffffff);
+      // scene.add(ambientLight);
+      // var pointLight = new THREE.PointLight("#ffffff");
+      // pointLight.position.set(0,10,0);
+      // scene.add(pointLight);
+      // 添加控制器
+      // controls = new THREE.OrbitControls( camera, container );
+      // controls.target.set( 150, -50, 150 );
+      // controls.update();
+      this.creatMode()
+      const _this = this
+      function render() {
+        if (_this.data.leftMove) {
+          camera.position.x -= 1
+        }
+        if (_this.data.rightMove) {
+          camera.position.x += 1
+        }
+				renderer.render( scene, camera );
+      }
+      // this.initThreeClickEvent()
+    },
+    creatMode: function () {
+      // 辅助参考线
+      // var grid = new THREE.GridHelper(500, 100);
+      // grid.rotation.x = 90 / 180 * Math.PI
+      // scene.add(grid);
+      // console.log(infoData)
+      infoData.forEach(element => {
+        new THREE.TextureLoader().load(element.fileName, (texture) => {
+          const obgW = element.width / 10
+          const obgH = element.height / 10
+          const objL = element.left / 10
+          const objT = element.top / 10
+          // console.log(element.name)
+          texture.minFilter = THREE.LinearFilter;
+          // MeshBasicMaterial SpriteMaterial
+          var textObj = new THREE.MeshBasicMaterial({
+            map: texture,
+            opacity: element.opacity / 100,
+            transparent: true,
+            color: 0xffffff,
+            depthTest: true,
+            sizeAttenuation: false
+          });
+          
+          var logo = new THREE.Sprite(textObj);
+          logo.scale.set(element.width / 10, element.height / 10, 0.1);
+          logo.name = element.name
+          if (element.rotationY) logo.rotation.y = element.rotationY
+          if (element.rotationX) logo.rotation.x = element.rotationX
+          logo.updateMatrix();
+          logo.renderOrder = 200 - element.index
+          logo.position.set(objL + (obgW / 2), -objT - (obgH / 2), -2 * element.index);
+          scene.add(logo);
+        })
+      });
+    },
+    changeValue: function (item, key, value) {
+      value = parseFloat(value) * this.data.beishu
+      const target = scene.getObjectByName(this.data.inputValue)
+      
+      if (target) {
+        target[item][key] += value
+        console.log({
+          left: target.position.x * 10 - (target.scale.x * 10 / 2),
+          top: -target.position.y * 10 - (target.scale.y * 10 / 2),
+          index: target.position.z / -2,
+          rotationY: target.rotation.y
+        })
+      }
+      
+    },
+    leftStart: function (e) {
+      
+    }
+  }
+</script>
+
+
+<style lang="less">
+.start-button {
+  position: fixed;
+  right: 1%;
+  bottom: 1%;
+  width: 20vw;
+}
+.conn-box {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 200px;
+  height: 100px;
+  background-color: #ccc;
+  input {
+    display: block;
+  }
+  span {
+    background-color: #009fe9;
+    color: white;
+    padding: 5px;
+    margin: 5px 5px;
+  }
+}
+.left {
+  position: absolute;
+  left: 2%;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  user-select: none;
+}
+.right {
+  position: absolute;
+  right: 2%;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  user-select: none;
+}
+</style>

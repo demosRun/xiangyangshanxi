@@ -1,191 +1,12 @@
 <template lang="pug">
 .page-1
-  //- img.start-button(src="@|start.png|")
-  .left(o-touchstart="this.data.leftMove = true" o-touchend="this.data.leftMove = false") 左
-  .right(o-touchstart="this.data.rightMove = true" o-touchend="this.data.rightMove = false") 右
-  .show-box.scale-box
-    .conn
-      // 首页
-      .so.so-0
-        // 鸟
-        img.so.so-1(src="@|268.png|")
-        // 长城博览在山西 从战国到明清 历代长城在山西都有遗存 大美太行在山西 浩浩荡荡开天辟地 绵绵延延八百公里 黄河之魂在山西 “天
-        img.so.so-2(src="@|642.png|")
-        // 向左移动后出现字
-        img.so.so-3(src="@|640.png|")
-        // 小山
-        img.so.so-4(src="@|237.png|")
-        // c6273a70a19eba7f200d0deaa078eade
-        img.so.so-5(src="@|202.png|")
-        // 4 拷贝 2
-        img.so.so-6(src="@|221.png|")
-        // BG
-        img.so.so-7(src="@|641.png|")
-      // button长按游览
-      img.so.so-8(src="@|630.png|")
-      // 老牛湾
-      .so.so-9
-        // 名字牌
-        img.so.so-10(src="@|379.png|")
-        // 黄河流入山西的 第一站
-        img.so.so-11(src="@|664.png|")
-        // 云
-        img.so.so-12(src="@|374.png|")
-        // 前景
-        img.so.so-13(src="@|388.png|")
-        // BG
-        img.so.so-14(src="@|390.png|")
-      // 壶口
-      .so.so-15
-        // 世界第一大 黄色瀑布 
-        img.so.so-16(src="@|608.png|")
-        // FG
-        img.so.so-17(src="@|28.png|")
-        // 鸟
-        img.so.so-18(src="@|23.png|")
-        // BG
-        img.so.so-19(src="@|485.png|")
-      // 鹳雀楼
-      .so.so-20
-        // 名字牌
-        img.so.so-21(src="@|453.png|")
-        // 欲穷千里目 更上一层楼 
-        img.so.so-22(src="@|609.png|")
-        // FG
-        img.so.so-23(src="@|454.png|")
-        // 船
-        img.so.so-24(src="@|458.png|")
-        // BG
-        img.so.so-25(src="@|479.png|")
-      // 碛口古镇
-      .so.so-26
-        // 名字牌
-        img.so.so-27(src="@|168.png|")
-        // 「活着的古镇」
-        img.so.so-28(src="@|607.png|")
-        // 碛口古镇前景
-        img.so.so-29(src="@|145.png|")
-        // 碛口古镇山BG
-        img.so.so-30(src="@|147.png|")
-      // 长城卷轴
-      img.so.so-31(src="@|563.png|")
-      // 雁门关
-      .so.so-32
-        // 名字牌
-        img.so.so-33(src="@|498.png|")
-        // 「中华第一关」 
-        img.so.so-34(src="@|610.png|")
-        // 云
-        img.so.so-35(src="@|497.png|")
-        // 云
-        img.so.so-36(src="@|496.png|")
-        // D0002BE6-ACC0-4857-AE1C-8A759A9CCAC3
-        img.so.so-37(src="@|494.png|")
-        // 矩形 3
-        img.so.so-38(src="@|493.png|")
-      // 娘子关
-      .so.so-39
-        // 名字牌
-        img.so.so-40(src="@|506.png|")
-        // 长城第九关 
-        img.so.so-41(src="@|611.png|")
-        // D6F7824E-8A78-4C64-9679-A83D7AED1FCA 拷贝 2
-        img.so.so-42(src="@|503.png|")
-        // BG
-        img.so.so-43(src="@|501.png|")
-      // 平型关
-      .so.so-44
-        // 名字牌
-        img.so.so-45(src="@|517.png|")
-        // 抗战胜利从这里开始
-        img.so.so-46(src="@|612.png|")
-        // 云 拷贝
-        img.so.so-47(src="@|516.png|")
-        // 云
-        img.so.so-48(src="@|515.png|")
-        // 平型关关口
-        img.so.so-49(src="@|668.png|")
-        // 原创作品2
-        img.so.so-50(src="@|512.png|")
-        // 点
-        img.so.so-51(src="@|511.png|")
-        // EEEA90C2-3C9F-4FBF-AEC8-E5AFAB0AF766
-        img.so.so-52(src="@|666.png|")
-      // 右玉古堡
-      .so.so-53
-        // 名字牌
-        img.so.so-54(src="@|523.png|")
-        //  中国古堡之乡
-        img.so.so-55(src="@|613.png|")
-        // 云
-        img.so.so-56(src="@|522.png|")
-        // Fg
-        img.so.so-57(src="@|521.png|")
-        // BG
-        img.so.so-58(src="@|520.png|")
-      // 太行卷轴
-      img.so.so-59(src="@|564.png|")
-      // 藏山
-      .so.so-60
-        // 名字牌
-        img.so.so-61(src="@|569.png|")
-        // 赵氏孤儿历史典故 源远流长
-        img.so.so-62(src="@|614.png|")
-        // 藏山FG
-        img.so.so-63(src="@|568.png|")
-        // BG
-        img.so.so-64(src="@|567.png|")
-      // 通天峡
-      .so.so-65
-        // 「千峰壁立，中通峭峡」 「亘如长虹，横绝天阶」 
-        img.so.so-66(src="@|615.png|")
-        // 名字牌
-        img.so.so-67(src="@|578.png|")
-        // FG
-        img.so.so-68(src="@|577.png|")
-        // 船
-        img.so.so-69(src="@|576.png|")
-        // 云
-        img.so.so-70(src="@|575.png|")
-        // 云
-        img.so.so-71(src="@|574.png|")
-        // 鸟
-        img.so.so-72(src="@|573.png|")
-        // Bg
-        img.so.so-73(src="@|572.png|")
-      // 太行大峡谷
-      .so.so-74
-        // 雏形始成于25亿年前  
-        img.so.so-75(src="@|618.png|")
-        // 名字牌
-        img.so.so-76(src="@|582.png|")
-        // BG
-        img.so.so-77(src="@|581.png|")
-      // 王莽岭
-      .so.so-78
-        // 南太行的最高峰 
-        img.so.so-79(src="@|619.png|")
-        // 名字牌
-        img.so.so-80(src="@|586.png|")
-        // BG
-        img.so.so-81(src="@|585.png|")
-      // 云丘山
-      .so.so-82
-        // 「华夏年轮」 
-        img.so.so-83(src="@|620.png|")
-        // 名字牌
-        img.so.so-84(src="@|603.png|")
-        // FG
-        img.so.so-85(src="@|602.png|")
-        // 云
-        img.so.so-86(src="@|601.png|")
-        // BG
-        img.so.so-87(src="@|600.png|")
-      // 结束页
-      img.so.so-88(src="@|631.png|")
-      // button点击选择明信片
-      img.so.so-89(src="@|639.png|")
-
+  .scale-box
+    //- 信息显示框
+    .info-bar 松开即可打卡该景点
+    .start-button(o-touchstart="playVideo" o-touchend="pauseVideo")
+    video(id="videoPlay" src="@|video.mp4|" x5-video-orientation="portrait" preload="auto" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-fullscreen="true" x5-video-player-type="h5" οnplay="onVideoLoad()")
+    canvas#screenshot(width="1334" height="750")
+    img.show-image(src="")
 </template>
 
 <script>
@@ -193,533 +14,104 @@
     data: {
     },
     created: function () {
+      // this.query('#videoPlay').play()
+      // 初始化Canvas
+      const video = this.query('#videoPlay')
+      const screenshot = this.query('#screenshot')
+      screenshot.style.width = video.videoWidth + 'px'
+      screenshot.style.height = video.videoHeight + 'px'
+    },
+    playVideo: function () {
+      this.$el.classList.add('touch')
+      setTimeout(() => {
+        this.query('#videoPlay').play()
+      }, 0);
+      
+    },
+    pauseVideo: function () {
+      this.$el.classList.remove('touch')
+      this.query('#videoPlay').pause()
+      this.screenshot()
+    },
+    screenshot: function () {
+      const video = this.query('#videoPlay')
+      const canv = this.query('#screenshot')
+      const ctx1 = canv.getContext('2d')
+      ctx1.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+      let frame = ctx1.getImageData(0, 0, video.videoWidth, video.videoHeight);
+      let l = frame.data.length / 4;
+
+      for (let i = 0; i < l; i++) {
+        let r = frame.data[i * 4 + 0];
+        let g = frame.data[i * 4 + 1];
+        let b = frame.data[i * 4 + 2];
+        if (g > 100 && r > 100 && b < 43)
+          frame.data[i * 4 + 3] = 0;
+      }
+      ctx1.putImageData(frame, 0, 0);
+      // 截图
+      const showImage = this.query('.show-image')
+      showImage.src = canv.toDataURL('image/png')
+      showImage.style.display = 'block'
+      showImage.style.opacity = 1
+      new Audio("@|kuaimen.mp3|").play()
     }
   }
 </script>
 
 
 <style lang="less">
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 .start-button {
   position: fixed;
   right: 1%;
   bottom: 1%;
-  width: 20vw;
-}
-.left {
-  position: absolute;
-  left: 2%;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  width: 60px;
-  height: 60px;
-  text-align: center;
-  line-height: 60px;
+  width: 200px;
+  height: 200px;
+  background-repeat: no-repeat;
+  z-index: 99;
   user-select: none;
+  background-position: center;
+  background-image: url('@|start.png|');
+  background-size: 200px;
 }
-.right {
+
+.info-bar {
   position: absolute;
-  right: 2%;
-  top: 0;
-  bottom: 0;
+  bottom: 75px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10px 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 31px;
+  left: 0;
+  right: 0;
   margin: auto;
-  width: 60px;
-  height: 60px;
+  width: 300px;
   text-align: center;
-  line-height: 60px;
-  user-select: none;
+  opacity: 0;
+  transition: width 1s;
 }
-.so {
+#screenshot {
+  display: none;
+}
+.show-image {
+  display: none;
+  opacity: 0;
+  width: 1334px;
+  height: 750px;
   position: absolute;
-}
-.so-0 {
-  left: 0px;
-  top: 0px;
-  width: 13970px;
-  height: 750px;
-  z-index: 18;;
-}
-.so-1 {
-  left: 1198px;
-  top: 324px;
-  z-index: 17;
-}
-.so-2 {
-  left: 517px;
-  top: 145px;
-  z-index: 16;
-}
-.so-3 {
-  left: 0px;
-  top: 1px;
-  z-index: 15;
-}
-.so-4 {
-  left: 862px;
-  top: 162px;
-  z-index: 14;
-}
-.so-5 {
-  left: 1980px;
-  top: 257px;
-  z-index: 13;
-}
-.so-6 {
-  left: 1330px;
-  top: 0px;
-  z-index: 12;
-}
-.so-7 {
-  left: 0px;
-  top: 0px;
-  z-index: 11;
-}
-.so-8 {
-  left: 1664px;
-  top: 452px;
-  z-index: 10;
-}
-.so-9 {
-  left: 2664px;
-  top: 0px;
-  width: 7080px;
-  height: 750px;
-  z-index: 9;;
-}
-.so-10 {
-  left: 2425px;
-  top: 117px;
-  z-index: 8;
-}
-.so-11 {
-  left: 2135px;
-  top: 0px;
-  z-index: 7;
-}
-.so-12 {
-  left: 1395px;
-  top: 0px;
-  z-index: 6;
-}
-.so-13 {
-  left: 0px;
-  top: 0px;
-  z-index: 5;
-}
-.so-14 {
-  left: 888px;
-  top: 0px;
-  z-index: 4;
-}
-.so-15 {
-  left: 10806px;
-  top: 0px;
-  width: 3130px;
-  height: 750px;
-  z-index: 3;;
-}
-.so-16 {
-  left: 2043px;
-  top: 344px;
-  z-index: 2;
-}
-.so-17 {
-  left: 1858px;
-  top: 62px;
-  z-index: 1;
-}
-.so-18 {
-  left: 0px;
-  top: 78px;
-  z-index: 0;
-}
-.so-19 {
-  left: 408px;
-  top: 0px;
-  z-index: -1;
-}
-.so-20 {
-  left: 12239px;
-  top: 0px;
-  width: 5348px;
-  height: 750px;
-  z-index: 1;
-}
-.so-21 {
-  left: 3358px;
-  top: 148px;
-  z-index: -3;
-}
-.so-22 {
-  left: 3052px;
-  top: 0px;
-  z-index: -4;
-}
-.so-23 {
-  left: 4284px;
-  top: 0px;
-  z-index: -5;
-}
-.so-24 {
-  left: 1938px;
-  top: 382px;
-  z-index: -6;
-}
-.so-25 {
-  left: 0px;
-  top: 0px;
-  z-index: -7;
-}
-.so-26 {
-  left: 5663px;
-  top: 0px;
-  width: 6643px;
-  height: 750px;
-  z-index: 1;
-}
-.so-27 {
-  left: 3346px;
-  top: 271px;
-  z-index: -9;
-}
-.so-28 {
-  left: 3100px;
-  top: 113px;
-  z-index: -10;
-}
-.so-29 {
-  left: 2587px;
-  top: 0px;
-  z-index: -11;
-}
-.so-30 {
-  left: 0px;
-  top: 0px;
-  z-index: -12;
-}
-.so-31 {
-  left: 17649px;
-  top: 37px;
-  z-index: 1;
-}
-.so-32 {
-  left: 17091px;
-  top: 0px;
-  width: 4806px;
-  height: 750px;
-  z-index: 1;
-}
-.so-33 {
-  left: 2620px;
-  top: 156px;
-  z-index: -15;
-}
-.so-34 {
-  left: 2371px;
-  top: 0px;
-  z-index: -16;
-}
-.so-35 {
-  left: 2021px;
-  top: 267px;
-  z-index: -17;
-}
-.so-36 {
-  left: 745px;
-  top: 0px;
-  z-index: -18;
-}
-.so-37 {
-  left: 2252px;
-  top: 11px;
-  z-index: -19;
-}
-.so-38 {
-  left: 0px;
-  top: 0px;
-  z-index: -20;
-}
-.so-39 {
-  left: 20713px;
-  top: 0px;
-  width: 2384px;
-  height: 750px;
-  z-index: 1;
-}
-.so-40 {
-  left: 728px;
-  top: 153px;
-  z-index: -22;
-}
-.so-41 {
-  left: 489px;
-  top: 17px;
-  z-index: -23;
-}
-.so-42 {
-  left: 96px;
-  top: 0px;
-  z-index: -24;
-}
-.so-43 {
-  left: 0px;
-  top: 77px;
-  z-index: -25;
-}
-.so-44 {
-  left: 21888px;
-  top: 0px;
-  width: 3260px;
-  height: 750px;
-  z-index: 1;
-}
-.so-45 {
-  left: 1436px;
-  top: 154px;
-  z-index: -27;
-}
-.so-46 {
-  left: 1197px;
-  top: 0px;
-  z-index: -28;
-}
-.so-47 {
-  left: 0px;
-  top: 33px;
-  z-index: -29;
-}
-.so-48 {
-  left: 1637px;
-  top: 136px;
-  z-index: -30;
-}
-.so-49 {
-  left: 652px;
-  top: 70px;
-  z-index: -31;
-}
-.so-50 {
-  left: 159px;
-  top: 0px;
-  z-index: -32;
-}
-.so-51 {
-  left: 1473px;
-  top: 120px;
-  z-index: -33;
-}
-.so-52 {
-  left: 643px;
-  top: 58px;
-  z-index: -34;
-}
-.so-53 {
-  left: 24315px;
-  top: 0px;
-  width: 3403px;
-  height: 750px;
-  z-index: 1;
-}
-.so-54 {
-  left: 1518px;
-  top: 145px;
-  z-index: -36;
-}
-.so-55 {
-  left: 1279px;
-  top: 0px;
-  z-index: -37;
-}
-.so-56 {
-  left: 1706px;
-  top: 34px;
-  z-index: -38;
-}
-.so-57 {
-  left: 57px;
-  top: 0px;
-  z-index: -39;
-}
-.so-58 {
-  left: 0px;
-  top: 0px;
-  z-index: -40;
-}
-.so-59 {
-  left: 27491px;
-  top: 37px;
-  z-index: -41;
-}
-.so-60 {
-  left: 26954px;
-  top: 0px;
-  width: 5891px;
-  height: 750px;
-  z-index: 1;
-}
-.so-61 {
-  left: 2977px;
-  top: 148px;
-  z-index: -43;
-}
-.so-62 {
-  left: 2678px;
-  top: 0px;
-  z-index: -44;
-}
-.so-63 {
-  left: 2058px;
-  top: 418px;
-  z-index: -45;
-}
-.so-64 {
-  left: 0px;
-  top: 0px;
-  z-index: -46;
-}
-.so-65 {
-  left: 30963px;
-  top: 0px;
-  width: 2943px;
-  height: 750px;
-  z-index: 1;
-}
-.so-66 {
-  left: 995px;
-  top: 8px;
-  z-index: -48;
-}
-.so-67 {
-  left: 1289px;
-  top: 176px;
-  z-index: -49;
-}
-.so-68 {
-  left: 1697px;
-  top: 192px;
-  z-index: -50;
-}
-.so-69 {
-  left: 1054px;
-  top: 579px;
-  z-index: -51;
-}
-.so-70 {
-  left: 641px;
-  top: 78px;
-  z-index: -52;
-}
-.so-71 {
-  left: 0px;
-  top: 0px;
-  z-index: -53;
-}
-.so-72 {
-  left: 483px;
-  top: 62px;
-  z-index: -54;
-}
-.so-73 {
-  left: 105px;
-  top: 0px;
-  z-index: -55;
-}
-.so-74 {
-  left: 33522px;
-  top: 0px;
-  width: 2618px;
-  height: 750px;
-  z-index: 1;
-}
-.so-75 {
-  left: 1453px;
-  top: 8px;
-  z-index: -57;
-}
-.so-76 {
-  left: 1687px;
-  top: 163px;
-  z-index: -58;
-}
-.so-77 {
-  left: 0px;
-  top: 0px;
-  z-index: -59;
-}
-.so-78 {
-  left: 35512px;
-  top: 0px;
-  width: 4823px;
-  height: 750px;
-  z-index: 1;
-}
-.so-79 {
-  left: 2159px;
-  top: 0px;
-  z-index: -61;
-}
-.so-80 {
-  left: 2397px;
-  top: 154px;
-  z-index: -62;
-}
-.so-81 {
-  left: 0px;
-  top: 0px;
-  z-index: -63;
-}
-.so-82 {
-  left: 38718px;
-  top: 0px;
-  width: 6356px;
-  height: 750px;
-  z-index: 1;
-}
-.so-83 {
-  left: 3178px;
-  top: 7px;
-  z-index: -65;
-}
-.so-84 {
-  left: 3423px;
-  top: 158px;
-  z-index: -66;
-}
-.so-85 {
-  left: 1797px;
-  top: 20px;
-  z-index: -67;
-}
-.so-86 {
-  left: 2869px;
-  top: 131px;
-  z-index: -68;
-}
-.so-87 {
-  left: 0px;
-  top: 0px;
-  z-index: -69;
-}
-.so-88 {
-  left: 43971px;
-  top: 30px;
-  z-index: 1;
-}
-.so-89 {
-  left: 44338px;
-  top: 476px;
-  z-index: 2;
-}
-.show-box {
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  position: relative;
-  
-}
-.conn {
-  background-image: url('@|bg.png|');
-  width: 46510px;
-  height: 750px;
+  left: -50%;
+  top: -50%;
+  right: -50%;
+  bottom: -50%;
+  z-index: 999;
+  margin: auto;
 }
 </style>

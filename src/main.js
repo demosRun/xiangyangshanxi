@@ -20,37 +20,13 @@ autoScale({
   box: '.rotate-box'
 })
 
-document.body.addEventListener('keyup', function (e) {
-  // console.log(e)
-  switch (e.keyCode) {
-    case 87:
-      camera.position.z -= 1 * owo.script.page1.data.beishu
-      break;
-    case 65:
-      camera.position.x -= 1 * owo.script.page1.data.beishu
-      break;
-    case 83:
-      camera.position.z += 1 * owo.script.page1.data.beishu
-      break;
-    case 68:
-      camera.position.x += 1 * owo.script.page1.data.beishu
-      break;
-    case 69:
-      camera.rotation.y -= 0.1 * owo.script.page1.data.beishu
-      break;
-    case 81:
-      camera.rotation.y += 0.1 * owo.script.page1.data.beishu
-      break;
-    case 107:
-      camera.position.y += 1 * owo.script.page1.data.beishu
-      break;
-    case 109:
-      camera.position.y -= 1 * owo.script.page1.data.beishu
-      break;
-    default:
-      break;
-  }
-}, {passive: false})
+var v = document.getElementsByTagName("video")[0];
+v.addEventListener("canplay", function() {
+  setTimeout(() => {
+    owo.go('page1')
+  }, 500);
+}, true);
+
 
 autoScale({
   // 璁捐瀹藉害

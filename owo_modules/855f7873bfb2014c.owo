@@ -15,17 +15,11 @@
       ]
     },
     show: function () {
-      const mum = owo.query('.num')[0]
-      const numBar = owo.query('.num-bar')[0]
-      this.preloadImages(this.data.imgList, (e) => {
-        setTimeout(() => {
-          // owo.go({noBack: true,page: "page1"})
-          owo.go('page1')
-        }, 500)
-      }, (num) => {
-        numBar.style.width = num + '%'
-        mum.innerHTML = num + '%'
-      })
+      // owo.go('page1')
+      // document.getElementById('videoPlay').οnloadstart = function() {
+      //   alert('ss')
+      //   owo.go('page1')
+      // }
     },
     preloadImage: function (src, successFn) {
       var image = new Image()

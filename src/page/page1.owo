@@ -6,34 +6,61 @@
     .start-button(o-touchstart="playVideo" o-touchend="pauseVideo")
     video(id="videoPlay" src="@|video.mp4|" x5-video-orientation="portrait" preload="auto" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-fullscreen="true" x5-video-player-type="h5" οnplay="onVideoLoad()")
     canvas#screenshot(width="1334" height="750")
-    img.show-image(src="")
+    .show-image
+      img(src="")
+    //- 点击选择明信片
+    img.select(src="@|select.png|" o-animation="shrink" go="page2//scaleDown/scaleUpDown/true/scaleDown/scaleUp")
 </template>
 
 <script>
   module.exports = {
     data: {
+      swiper: null,
+      isCut: false,
+      isPlaying: false,
+      timestamp: Number.MAX_VALUE
     },
     created: function () {
-      // this.query('#videoPlay').play()
+      this.query('#videoPlay').play()
       // 初始化Canvas
       const video = this.query('#videoPlay')
       const screenshot = this.query('#screenshot')
       screenshot.style.width = video.videoWidth + 'px'
       screenshot.style.height = video.videoHeight + 'px'
+      // 视频播放结束事件
+      video.addEventListener('ended', () => { //结束
+        this.clear()
+      }, false);
     },
     playVideo: function () {
-      this.$el.classList.add('touch')
-      setTimeout(() => {
-        this.query('#videoPlay').play()
-      }, 0);
+      // if (Date.parse(new Date()) - this.data.timestamp) {
+        
+      // }
+      this.data.isPlaying = true
+      this.data.timestamp = new Date()
       
+      this.query('#videoPlay').play()
+      setTimeout(() => {
+        this.$el.classList.add('touch')
+      }, 1000);
     },
     pauseVideo: function () {
+      // 快结束了自动播放到完
+      if (new Date() - this.data.timestamp < 1000) {
+        owo.tool.toast('按住按钮不放继续浏览哦!')
+      }
+      if (this.query('#videoPlay').currentTime > 152) {
+        return
+      }
+      this.data.isPlaying = false
       this.$el.classList.remove('touch')
       this.query('#videoPlay').pause()
       this.screenshot()
+      
     },
     screenshot: function () {
+      if (this.data.isCut) return
+      this.data.isCut = true
       const video = this.query('#videoPlay')
       const canv = this.query('#screenshot')
       const ctx1 = canv.getContext('2d')
@@ -49,12 +76,49 @@
           frame.data[i * 4 + 3] = 0;
       }
       ctx1.putImageData(frame, 0, 0);
-      // 截图
-      const showImage = this.query('.show-image')
-      showImage.src = canv.toDataURL('image/png')
-      showImage.style.display = 'block'
-      showImage.style.opacity = 1
+
       new Audio("@|kuaimen.mp3|").play()
+      // 截图
+      const showImageBox = this.query('.show-image')
+      const showImage = this.query('.show-image img')
+      showImage.src = canv.toDataURL('image/png')
+      showImageBox.style.display = 'block'
+      setTimeout(() => {
+        showImage.style.opacity = 1
+        showImageBox.style.width = '133px'
+        showImageBox.style.height = '75px'
+      }, 0);
+      setTimeout(() => {
+        showImageBox.style.left = '87%'
+        showImageBox.style.bottom = '87%'
+      }, 500);
+      setTimeout(() => {
+        showImageBox.style.opacity = 0
+      }, 1000);
+      // 截图完毕后归位
+      setTimeout(() => {
+        showImageBox.style.display = ''
+        showImageBox.style.width = ''
+        showImageBox.style.height = ''
+        showImage.style.opacity = ''
+        showImageBox.style.opacity = ''
+        showImageBox.style.left = ''
+        showImageBox.style.bottom = ''
+        this.data.isCut = false
+      }, 2000);
+    },
+    clear: function () {
+      this.data.isCut = true
+      this.$el.classList.remove('touch')
+      this.query('.start-button').style.display = 'none'
+      this.query('.select').style.display = 'block'
+
+      setTimeout(() => {
+        this.query('.select').style.opacity = 1
+      }, 100);
+    },
+    share: function () {
+      owo.tool.toast('长按你喜欢的明信片分享吧!')
     }
   }
 </script>
@@ -79,6 +143,9 @@ video {
   background-position: center;
   background-image: url('@|start.png|');
   background-size: 200px;
+  display: none;
+  transition: opacity 1s;
+  opacity: 0;
 }
 
 .info-bar {
@@ -103,15 +170,34 @@ video {
 }
 .show-image {
   display: none;
-  opacity: 0;
   width: 1334px;
   height: 750px;
   position: absolute;
-  left: -50%;
-  top: -50%;
-  right: -50%;
-  bottom: -50%;
+  right: 0%;
+  top: 0%;
+  bottom: 0;
+  left: 0;
   z-index: 999;
   margin: auto;
+  background: white;
+  border: 2px solid #ccc;
+  transition: width 1.5s, height 1.5s, left 1.5s, bottom 1.5s, opacity 0.5s;
+  img {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s;
+  }
+}
+
+.select {
+  position: absolute;
+  left: 8%;
+  right: 0;
+  bottom: 12%;
+  margin: 0 auto;
+  display: none;
+  opacity: 0;
+  transition: opacity 1s;
 }
 </style>

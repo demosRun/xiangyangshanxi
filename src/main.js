@@ -22,10 +22,22 @@ autoScale({
 
 var v = document.getElementsByTagName("video")[0];
 v.addEventListener("canplay", function() {
-  setTimeout(() => {
-    owo.go('page1')
-  }, 500);
+  document.getElementsByClassName('enter')[0].style.display = 'block'
 }, true);
+var isAutoPlayEnd = false
+v.addEventListener("timeupdate", (event) => {
+  console.log(event.target.currentTime)
+  if (isAutoPlayEnd) return
+  
+  if (event.target.currentTime > 13) {
+    isAutoPlayEnd = true
+    v.pause()
+    document.getElementsByClassName('start-button')[0].style.display = 'block'
+    setTimeout(() => {
+      document.getElementsByClassName('start-button')[0].style.opacity = 1
+    }, 100);
+  }
+})
 
 
 autoScale({
@@ -34,3 +46,17 @@ autoScale({
   type: 'rollH5',
   box: '.scale-box'
 })
+
+var vidSources = [
+  "@|video.mp4|"
+];
+
+function loadVideo (element, index) {
+  setTimeout(function () {
+    v.src = element;
+    v.play()
+    setTimeout(function () {
+      v.pause()
+    }, 200);
+  }, 1000 * index);
+}

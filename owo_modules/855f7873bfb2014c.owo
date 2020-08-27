@@ -1,10 +1,6 @@
 <template lang="pug">
 .loading-box.scale-box
-  img.loading(src="https://cunchu.site/ozzx/resource/loadingLogo.png")
-  .loading-bar
-    .num-bar
-  span.text Loading
-  .num 0%
+  .enter(go="page1////true") 点击进入
 </template>
 
 <script>
@@ -101,4 +97,23 @@
 .text {
   bottom: -14%;
 } 
+.enter {
+  display: none;
+  font-size: 40px;
+  display: block;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  color: white;
+  background-color: #009fe9;
+  text-align: center;
+  line-height: 50px;
+  padding: 20px;
+  border-radius: 80px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
 </style>

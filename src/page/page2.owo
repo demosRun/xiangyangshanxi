@@ -1,0 +1,82 @@
+<template lang="pug">
+.page-2
+  .scale-box
+    .share-box
+      img.replay-button(src="@|replay.png|" o-tap="location.reload();")
+      img.share-button(src="@|share.png|" o-tap="share")
+      img.left-button(src="@|left.png|" o-tap="this.data.swiper.prev()")
+      img.right-button(src="@|right.png|" o-tap="this.data.swiper.next()")
+      //- 轮播图区域
+      .swiper-box
+        img(src="@|swiper-test.png|")
+        img(src="@|swiper-test.png|")
+        img(src="@|swiper-test.png|")
+</template>
+
+<script>
+  module.exports = {
+    data: {
+      swiper: null
+    },
+    created: function () {
+      this.data.swiper = new swiperIt(this.query('.swiper-box'), {
+        showSlider: 3,
+        width: 654,
+        height: 368,
+        reverseTouch: true
+      })
+    }
+  }
+</script>
+
+
+<style lang="less">
+.share-box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-image: url('@|share-bg.png|');
+  .replay-button {
+    position: absolute;
+    left: -400px;
+    right: 0;
+    margin: auto;
+    bottom: 60px;
+  }
+  .share-button {
+    position: absolute;
+    left: 0;
+    right: -400px;
+    margin: auto;
+    bottom: 60px;
+  }
+}
+.swiper-box {
+  display: block;
+  width: 100%;
+  height: 400px;
+  position: absolute;
+  top: 14%;
+  margin: auto;
+}
+.left-button {
+  position: absolute;
+  left: -60%;
+  right: 0;
+  top: -20%;
+  bottom: 0;
+  margin: auto;
+  z-index: 9;
+}
+.right-button {
+  position: absolute;
+  left: 0%;
+  right: -60%;
+  top: -20%;
+  bottom: 0;
+  margin: auto;
+  z-index: 9;
+}
+</style>

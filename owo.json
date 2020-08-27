@@ -93,6 +93,15 @@
 		{
 			"name": "three.min",
 			"src": "https://cunchu.site/owo/script/three.min.js"
+		},
+		{
+			"name": "swiper3D",
+			"src": "./owo_modules/swiper3D.js"
+		},
+		{
+			"name": "toast",
+			"afterbody": true,
+			"src": "./owo_modules/toast.js"
 		}
 	],
 	"styleList": [
@@ -111,6 +120,11 @@
 		{
 			"name": "page1",
 			"src": "./src/page/page1.owo",
+			"type": "page"
+		},
+		{
+			"name": "page2",
+			"src": "./src/page/page2.owo",
 			"type": "page"
 		}
 	],

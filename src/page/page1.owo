@@ -4,12 +4,13 @@
     //- 信息显示框
     .info-bar 松开即可打卡该景点
     .start-button(o-touchstart="playVideo" o-touchend="pauseVideo")
-    video(id="videoPlay" src="@|video.mp4|" x5-video-orientation="portrait" preload="auto" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-fullscreen="true" x5-video-player-type="h5" οnplay="onVideoLoad()")
+    video(id="videoPlay" src="@|video.mp4|" x5-video-orientation="portrait" preload="auto" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-fullscreen="true" x5-video-player-type="h5" οnplay="onVideoLoad()" poster="@|posst.png|")
     canvas#screenshot(width="1334" height="750")
     .show-image
       img(src="")
     //- 点击选择明信片
     img.select(src="@|select.png|" o-animation="shrink" go="page2//scaleDown/scaleUpDown/true/scaleDown/scaleUp")
+    img.enter(src="@|loading-button.png|" o-animation="shrink" o-tap="play")
 </template>
 
 <script>
@@ -21,7 +22,7 @@
       timestamp: Number.MAX_VALUE
     },
     created: function () {
-      this.query('#videoPlay').play()
+      
       // 初始化Canvas
       const video = this.query('#videoPlay')
       const screenshot = this.query('#screenshot')
@@ -31,6 +32,10 @@
       video.addEventListener('ended', () => { //结束
         this.clear()
       }, false);
+    },
+    play: function () {
+      this.query('#videoPlay').play()
+      this.$target.style.opacity = 0
     },
     playVideo: function () {
       // if (Date.parse(new Date()) - this.data.timestamp) {
@@ -160,10 +165,12 @@ video {
   left: 0;
   right: 0;
   margin: auto;
-  width: 300px;
+  width: 400px;
   text-align: center;
   opacity: 0;
   transition: width 1s;
+  user-select: none;
+  pointer-events: none;
 }
 #screenshot {
   display: none;
@@ -199,5 +206,17 @@ video {
   display: none;
   opacity: 0;
   transition: opacity 1s;
+}
+.enter {
+  font-size: 40px;
+  position: absolute;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 80px;
+  left: 0;
+  right: 0;
+  bottom: 60px;
+  margin: auto;
 }
 </style>

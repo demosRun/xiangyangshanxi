@@ -53,7 +53,7 @@ autoScale({
 })
 
 var vidSources = [
-  "@|video.mp4|"
+  "../resource/video.mp4"
 ];
 
 function loadVideo (element, index) {

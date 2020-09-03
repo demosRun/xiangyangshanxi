@@ -33,7 +33,7 @@ v.addEventListener("timeupdate", (event) => {
   if (isAutoPlayEnd) return
   console.log(currentTime)
   const infoBar = document.getElementsByClassName('info-bar')[0]
-  if (currentTime > 13 && step < 1) {
+  if (currentTime > 11.5 && step < 1) {
     step++
     isAutoPlayEnd = true
     v.pause()

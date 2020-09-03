@@ -233,6 +233,37 @@ li {
   bottom: 60px;
   margin: auto;
 }
+
+.page-1 .video-play-button {
+  position: absolute;
+  right: 10%;
+  top: 3%;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.page-1 .video-box-2 {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  transition: opacity 2s;
+}
+
+.page-1 .video-box-2 .close {
+  position: absolute;
+  right: 3%;
+  top: 3%;
+  z-index: 1000;
+}
+
+.page-1 #videoPlay2 {
+  width: 100%;
+  height: 100%;
+}
 .page-2 .share-box {
   position: absolute;
   width: 100%;

@@ -10,6 +10,7 @@ owo.tool.toast = function (text, config) {
   if (!config) config = {}
   time = config.time || 2000
   fontSize = config.fontSize || 14
+  console.log(config)
   container = config.container || document.body
   if (window.owo.state.toastClock) {
     clearTimeout(window.owo.state.toastClock)
@@ -23,6 +24,7 @@ owo.tool.toast = function (text, config) {
 
   toast.innerHTML = text
   container.appendChild(toast)
+  
   function hideToast() {
     document.getElementById('toast').outerHTML = ''
     window.owo.state.toastClock = null

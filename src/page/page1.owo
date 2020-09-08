@@ -16,6 +16,10 @@
     img.enter(src="@|loading-button.png|" o-animation="shrink" o-tap="play")
     //- 视频播放按钮
     img.video-play-button(src="@|videoPlay.png|" o-tap="playVideo2")
+    //- 视频开始时候显示的文字
+    img.show-text(src="@|show-text.png|")
+    //- 音乐图标
+    img.music.turn(src="@|music.png|" o-tap="swMusic")
 </template>
 
 <script>
@@ -25,7 +29,8 @@
       isCut: false,
       isPlaying: false,
       timestamp: Number.MAX_VALUE,
-      videoSrc: ''
+      videoSrc: '',
+      musicIsPlay: true
     },
     created: function () {
       
@@ -35,9 +40,9 @@
       screenshot.style.width = video.videoWidth + 'px'
       screenshot.style.height = video.videoHeight + 'px'
       // 视频播放结束事件
-      video.addEventListener('ended', () => { //结束
-        this.clear()
-      }, false);
+      // video.addEventListener('ended', () => { //结束
+      //   this.clear()
+      // }, false);
       // 视频二结束播放事件
       this.query('#videoPlay2').addEventListener('ended', () => { //结束
         this.query('.video-box-2').style.opacity = 0
@@ -49,8 +54,12 @@
       
     },
     play: function () {
+      this.query('.show-text').style.display = 'none'
       this.query('#videoPlay').play()
       this.$target.style.opacity = 0
+      setTimeout(() => {
+        this.$target.style.display = 'none'
+      }, 1000);
     },
     playVideo: function () {
       // if (Date.parse(new Date()) - this.data.timestamp) {
@@ -58,7 +67,7 @@
       // }
       this.data.isPlaying = true
       this.data.timestamp = new Date()
-      
+      this.query('.video-play-button').style.opacity = 0
       this.query('#videoPlay').play()
       setTimeout(() => {
         this.$el.classList.add('touch')
@@ -66,72 +75,77 @@
     },
     pauseVideo: function () {
       const currentTime = document.getElementsByTagName("video")[0].currentTime
+      console.log(currentTime)
       let index = 0
-      if (currentTime < 33) {
+      if (currentTime > 28 && currentTime < 32) {
         // 1明信片老牛湾.jpg
         index = 1
         this.data.videoSrc = 'http://demos.run/sxwl/video/video-1.mp4'
-      } else if (currentTime < 43) {
+      } else if (currentTime > 44 && currentTime < 47) {
         // 2明信片碛口古镇
         index = 2
         this.data.videoSrc = 'http://demos.run/sxwl/video/video-2.mp4'
-      } else if (currentTime < 55) {
+      } else if (currentTime > 56 && currentTime < 59) {
         // 3明信片壶口瀑布
         index = 3
         this.data.videoSrc = 'http://demos.run/sxwl/video/video-3.mp4'
-      } else if (currentTime < 65) {
+      } else if (currentTime > 64 && currentTime < 68) {
         // 4明信片鹳雀楼
         index = 4
         this.data.videoSrc = 'http://demos.run/sxwl/video/video-4.mp4'
-      } else if (currentTime < 77) {
+      } else if (currentTime > 81 && currentTime < 84) {
         // 5明信片雁门关
         index = 5
         this.data.videoSrc = 'http://demos.run/sxwl/video/video-5.mp4'
-      } else if (currentTime < 84) {
+      } else if (currentTime > 90 && currentTime < 93) {
         // 6明信片娘子关
         index = 6
         this.data.videoSrc = 'http://demos.run/sxwl/video/video-6.mp4'
-      } else if (currentTime < 95) {
+      } else if (currentTime > 96 && currentTime < 99) {
         // 7明信片平型关
         index = 7
         this.data.videoSrc = 'http://demos.run/sxwl/video/video-7.mp4'
-      } else if (currentTime < 108) {
+      } else if (currentTime > 104 && currentTime < 108) {
         // 8明信片右玉古堡
         index = 8
         this.data.videoSrc = 'http://demos.run/sxwl/video/video-8.mp4'
-      } else if (currentTime < 118) {
+      } else if (currentTime > 120 && currentTime < 124) {
         // 9明信片藏山
         index = 9
         this.data.videoSrc = 'http://demos.run/sxwl/video/video-9.mp4'
-      } else if (currentTime < 127) {
+      } else if (currentTime > 132 && currentTime < 135) {
         // 10明信片通天峡
         index = 10
         this.data.videoSrc = 'http://demos.run/sxwl/video/video-10.mp4'
-      } else if (currentTime < 138) {
+      } else if (currentTime > 144 && currentTime < 148) {
         // 11明信片太行山大峡谷
         index = 11
         this.data.videoSrc = 'http://demos.run/sxwl/video/video-11.mp4'
-      } else if (currentTime < 148) {
+      } else if (currentTime > 154 && currentTime < 157) {
         // 12明信片王莽岭
         index = 12
         this.data.videoSrc = 'http://demos.run/sxwl/video/video-12.mp4'
-      } else if (currentTime < 158) {
+      } else if (currentTime > 168 && currentTime < 170) {
         // 13明信片云丘山
         index = 13
         this.data.videoSrc = 'http://demos.run/sxwl/video/video-13.mp4'
       }
       // 快结束了自动播放到完
       if (new Date() - this.data.timestamp < 1000) {
-        owo.tool.toast('按住按钮不放继续浏览哦!')
+        owo.tool.toast('按住按钮不放继续浏览哦!', {
+          container: $('.rotate-box')[0]
+        })
       }
-      if (this.query('#videoPlay').currentTime > 160) {
+      if (this.query('#videoPlay').currentTime > 170) {
         return
       }
       this.data.isPlaying = false
       this.$el.classList.remove('touch')
       this.query('#videoPlay').pause()
-      this.screenshot(index)
-      
+      console.log(index)
+      if (index !== 0) {
+        this.screenshot(index)
+      }
     },
     closeVideo: function () {
       this.query('#videoPlay2').pause()
@@ -155,7 +169,7 @@
         showImage.style.opacity = 1
         showImageBox.style.width = '133px'
         showImageBox.style.height = '75px'
-      }, 0);
+      }, 20);
       setTimeout(() => {
         showImageBox.style.left = '87%'
         showImageBox.style.bottom = '87%'
@@ -187,7 +201,9 @@
       }, 100);
     },
     share: function () {
-      owo.tool.toast('长按你喜欢的明信片分享吧!')
+      owo.tool.toast('长按你喜欢的明信片分享吧!', {
+        container: $('.rotate-box')[0]
+      })
     },
     playVideo2: function () {
       const video = this.query('#videoPlay2')
@@ -198,6 +214,18 @@
         this.query('.video-box-2').style.opacity = 1;
         video.play()
       }, 0);
+    },
+    swMusic: function () {
+      this.data.musicIsPlay = !this.data.musicIsPlay
+      console.log(this.data.musicIsPlay)
+      if (this.data.musicIsPlay) {
+        
+        this.$target.classList.add('turn')
+        this.query('#videoPlay').muted = !this.data.musicIsPlay
+      } else {
+        this.$target.classList.remove('turn')
+        this.query('#videoPlay').muted = !this.data.musicIsPlay
+      }
     }
   }
 </script>
@@ -273,13 +301,14 @@ video {
 
 .select {
   position: absolute;
-  left: 8%;
+  left: 0;
   right: 0;
-  bottom: 12%;
+  bottom: 14%;
   margin: 0 auto;
   display: none;
   opacity: 0;
   transition: opacity 1s;
+  z-index: 99;
 }
 .enter {
   font-size: 40px;
@@ -292,6 +321,7 @@ video {
   right: 0;
   bottom: 60px;
   margin: auto;
+  z-index: 9;
 }
 .video-play-button {
   position: absolute;
@@ -319,5 +349,28 @@ video {
 #videoPlay2 {
   width: 100%;
   height: 100%;
+}
+.show-text {
+  left: -50%;
+  right: -50%;
+  top: 0;
+  margin: auto;
+  position: absolute;
+  height: 100%;
+}
+@keyframes turn{
+  0%{-webkit-transform:rotate(0deg);}
+  25%{-webkit-transform:rotate(90deg);}
+  50%{-webkit-transform:rotate(180deg);}
+  75%{-webkit-transform:rotate(270deg);}
+  100%{-webkit-transform:rotate(360deg);}
+}
+.music {
+  position: absolute;
+  right: 2%;
+  top: 2%;
+}
+.turn{
+  animation:turn 10s linear infinite;      
 }
 </style>

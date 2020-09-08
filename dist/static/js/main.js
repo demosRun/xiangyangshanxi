@@ -33,7 +33,7 @@ v.addEventListener("timeupdate", (event) => {
   if (isAutoPlayEnd) return
   console.log(currentTime)
   const infoBar = document.getElementsByClassName('info-bar')[0]
-  if (currentTime > 11.5 && step < 1) {
+  if (currentTime > 13.5 && step < 1) {
     step++
     isAutoPlayEnd = true
     v.pause()
@@ -41,6 +41,12 @@ v.addEventListener("timeupdate", (event) => {
     setTimeout(() => {
       document.getElementsByClassName('start-button')[0].style.opacity = 1
     }, 100);
+  }
+  if (currentTime > 180 && step < 2) {
+    step++
+    isAutoPlayEnd = true
+    v.pause()
+    owo.script.page1.clear()
   }
 })
 

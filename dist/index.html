@@ -1,312 +1,395 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <!-- 页面的元信息 -->
-    <title>{TAG_14226_TAG}</title>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-    <meta name="format-detection" content="telephone=no, email=no"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta name="apple-mobile-web-app-status-bar-style" content="white"/>
-    <meta name="renderer" content="webkit"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta name="filetype" content="1"/>
-    <meta name="publishedtype" content="1"/>
-    <meta name="pagetype" content="2"/>
-    <meta name="screen-orientation" content="landscape"/>
-    <meta name="x5-orientation" content="landscape"/>
-    <meta name="full-screen" content="yes"/>
-    <meta name="x5-fullscreen" content="true"/>
-    <meta name="browsermode" content="application"/>
-    <meta name="x5-page-mode" content="app"/>
-    
-      <!-- 页面主样式文件 -->
-      <link charset="utf-8"  rel="stylesheet" href="./static/css/owo.core.css">
-      
-    <!-- 附属css文件 -->
-    <link rel="stylesheet" href="./static/css/main.css" charset="utf-8">
-      
-  </head>
-  <body>
-    <div class="rotate-box">
+
+<head>
+  <!-- 页面的元信息 -->
+  <title>{TAG_14226_TAG}</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no, email=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="filetype" content="1" />
+  <meta name="publishedtype" content="1" />
+  <meta name="pagetype" content="2" />
+  <meta name="screen-orientation" content="landscape" />
+  <meta name="x5-orientation" content="landscape" />
+  <meta name="full-screen" content="yes" />
+  <meta name="x5-fullscreen" content="true" />
+  <meta name="browsermode" content="application" />
+  <meta name="x5-page-mode" content="app" />
+
+  <!-- 页面主样式文件 -->
+  <link charset="utf-8" rel="stylesheet" href="./static/css/owo.core.css">
+
+  <!-- 附属css文件 -->
+  <link rel="stylesheet" href="./static/css/main.css" charset="utf-8">
+
+</head>
+
+<body>
+  <div class="rotate-box">
     <!-- 页面[loading]-->
-    <div class="loading-box scale-box page" template="loading" style="display: none;"><img class="ship" src="./static/resource/ship.png" o-tap="owo.go('page1////true')"></div>
+    <div class="loading-box scale-box page" template="loading" style="display: none;">
+      <img class="ship" src="./static/resource/ship.png" o-tap="owo.go('page1////true')">
+    </div>
     <!-- 页面[page1]-->
-    <div class="page-1 page" template="page1" style="display: none;"><div class="scale-box"><div class="info-bar">松开即可打卡该景点</div><div class="start-button" o-touchstart="playVideo" o-touchend="pauseVideo"></div><video id="videoPlay" src="./static/resource/video.mp4" x5-video-orientation="portrait" preload="auto" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-fullscreen="true" x5-video-player-type="h5" οnplay="onVideoLoad()" poster="./static/resource/posst.png"></video><canvas id="screenshot" width="1334" height="750"></canvas><div class="show-image"><img src=""></div><img class="select" src="./static/resource/select.png" o-animation="shrink" go="page2//scaleDown/scaleUpDown/true/scaleDown/scaleUp"><div class="video-box-2"><img class="close" src="./static/resource/close.png" o-tap="closeVideo"><video id="videoPlay2" src="" x5-video-orientation="portrait" preload="auto" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-fullscreen="true" x5-video-player-type="h5" οnplay="onVideoLoad()"></video></div><img class="enter" src="./static/resource/loading-button.png" o-animation="shrink" o-tap="play"><img class="video-play-button" src="./static/resource/videoPlay.png" o-tap="playVideo2"></div></div>
+    <div class="page-1 page" template="page1" style="display: none;">
+      <div class="scale-box">
+        <div class="info-bar">松开即可打卡该景点</div>
+        <div class="start-button" o-touchstart="playVideo" o-touchend="pauseVideo"></div>
+        <video id="videoPlay" src="./static/resource/video.mp4" x5-video-orientation="portrait" preload="auto" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-fullscreen="true" x5-video-player-type="h5" οnplay="onVideoLoad()" poster="./static/resource/posst.png"></video><canvas id="screenshot" width="1334" height="750"></canvas>
+        <div class="show-image">
+          <img src="">
+        </div>
+        <img class="select" src="./static/resource/select.png" o-animation="shrink" go="page2//scaleDown/scaleUpDown/true/scaleDown/scaleUp">
+        <div class="video-box-2">
+          <img class="close" src="./static/resource/close.png" o-tap="closeVideo">
+          <video id="videoPlay2" src="" x5-video-orientation="portrait" preload="auto" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-fullscreen="true" x5-video-player-type="h5" οnplay="onVideoLoad()"></video>
+        </div>
+        <img class="enter" src="./static/resource/loading-button.png" o-animation="shrink" o-tap="play">
+        <img class="video-play-button" src="./static/resource/videoPlay.png" o-tap="playVideo2">
+        <img class="show-text" src="./static/resource/show-text.png">
+        <img class="music turn" src="./static/resource/music.png" o-tap="swMusic">
+      </div>
+    </div>
     <!-- 页面[page2]-->
-    <div class="page-2 page" template="page2" style="display: none;"><div class="scale-box"><div class="share-box"><img class="replay-button" src="./static/resource/replay.png" o-tap="location.reload();"><img class="share-button" src="./static/resource/share.png" o-tap="share"><img class="left-button" src="./static/resource/left.png" o-tap="this.data.swiper.prev()"><img class="right-button" src="./static/resource/right.png" o-tap="this.data.swiper.next()"><div class="swiper-box"><img src="./static/resource/swiper-test.png"><img src="./static/resource/swiper-test.png"><img src="./static/resource/swiper-test.png"></div></div></div></div></div>
-    
+    <div class="page-2 page" template="page2" style="display: none;">
+      <div class="scale-box">
+        <div class="share-box">
+          <img class="replay-button" src="./static/resource/replay.png" o-tap="location.reload();">
+          <img class="share-button" src="./static/resource/share.png" o-tap="share">
+          <img class="left-button" src="./static/resource/left.png" o-tap="this.data.swiper.prev()">
+          <img class="right-button" src="./static/resource/right.png" o-tap="this.data.swiper.next()">
+          <div class="info" o-animation="flicker">长按图片保存到手机</div>
+          <div class="swiper-box">
+            <img src="./static/resource/swiper-1.jpg">
+            <img src="./static/resource/swiper-2.jpg">
+            <img src="./static/resource/swiper-3.jpg">
+            <img src="./static/resource/swiper-4.jpg">
+            <img src="./static/resource/swiper-5.jpg">
+            <img src="./static/resource/swiper-6.jpg">
+            <img src="./static/resource/swiper-7.jpg">
+            <img src="./static/resource/swiper-8.jpg">
+            <img src="./static/resource/swiper-9.jpg">
+            <img src="./static/resource/swiper-10.jpg">
+            <img src="./static/resource/swiper-11.jpg">
+            <img src="./static/resource/swiper-12.jpg">
+            <img src="./static/resource/swiper-13.jpg">
+            <img src="./static/resource/swiper-14.jpg">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <script src="http://tools.people.com.cn/libs/jquery/1.11.1/jquery-1.11.1.min.js" type="text/javascript"  charset="UTF-8"></script>
-    <script src="./static/js/autoScale.js" type="text/javascript"  charset="UTF-8"></script>
-    <script src="./static/js/main.js" type="text/javascript"  charset="UTF-8"></script>
-    <script src="https://cunchu.site/owo/script/TweenMax.js" type="text/javascript"  charset="UTF-8"></script>
-    <script src="https://cunchu.site/owo/script/three.min.js" type="text/javascript"  charset="UTF-8"></script>
-    <script src="./static/js/swiper3D.js" type="text/javascript"  charset="UTF-8"></script>
-<!-- 框架script文件 -->
-<script src="./static/js/owo.core.js" type="text/javascript" charset="UTF-8"></script>
-<script type="text/javascript" charset="UTF-8">
-owo.script = {
-  "loading": {
-    "data": {
-      "imgList": ["./static/resource/pic-1.jpg", "./static/resource/pic-2.jpg", "./static/resource/pic-3.jpg", "./static/resource/pic-4.jpg", "./static/resource/pic-5.jpg", "./static/resource/pic-6.jpg", "./static/resource/pic-7.jpg", "./static/resource/pic-8.jpg", "./static/resource/pic-9.jpg", "./static/resource/pic-10.jpg", "./static/resource/pic-11.jpg", "./static/resource/pic-12.jpg", "./static/resource/pic-13.jpg"]
-    },
-    "show": function show() {
-      var _this = this;
 
-      // owo.go('page1')
-      // document.getElementById('videoPlay').οnloadstart = function() {
-      //   alert('ss')
-      //   owo.go('page1')
-      // }
-      setTimeout(function () {
-        // document.getElementsByClassName('enter')[0].style.display = 'block'
-        owo.go('page1////true');
-      }, 3000);
-      setTimeout(function () {
-        _this.query('.ship').style.left = '85%';
-      }, 100);
-    },
-    "preloadImage": function preloadImage(src, successFn) {
-      var image = new Image();
-      image.src = src;
+  <script src="http://tools.people.com.cn/libs/jquery/1.11.1/jquery-1.11.1.min.js" type="text/javascript" charset="UTF-8"></script>
+  <script src="./static/js/autoScale.js" type="text/javascript" charset="UTF-8"></script>
+  <script src="./static/js/main.js" type="text/javascript" charset="UTF-8"></script>
+  <script src="https://cunchu.site/owo/script/TweenMax.js" type="text/javascript" charset="UTF-8"></script>
+  <script src="https://cunchu.site/owo/script/three.min.js" type="text/javascript" charset="UTF-8"></script>
+  <script src="./static/js/swiper3D.js" type="text/javascript" charset="UTF-8"></script>
+  <!-- 框架script文件 -->
+  <script src="./static/js/owo.core.js" type="text/javascript" charset="UTF-8"></script>
+  <script type="text/javascript" charset="UTF-8">
+    owo.script = {
+      "loading": {
+        "data": {
+          "imgList": ["./static/resource/pic-1.jpg", "./static/resource/pic-2.jpg", "./static/resource/pic-3.jpg", "./static/resource/pic-4.jpg", "./static/resource/pic-5.jpg", "./static/resource/pic-6.jpg", "./static/resource/pic-7.jpg", "./static/resource/pic-8.jpg", "./static/resource/pic-9.jpg", "./static/resource/pic-10.jpg", "./static/resource/pic-11.jpg", "./static/resource/pic-12.jpg", "./static/resource/pic-13.jpg"]
+        },
+        "show": function show() {
+          var _this = this;
 
-      image.onload = function () {
-        successFn && successFn(src);
-      };
+          // owo.go('page1')
+          // document.getElementById('videoPlay').οnloadstart = function() {
+          //   alert('ss')
+          //   owo.go('page1')
+          // }
+          setTimeout(function() {
+            // document.getElementsByClassName('enter')[0].style.display = 'block'
+            owo.go('page1////true');
+          }, 3000);
+          setTimeout(function() {
+            _this.query('.ship').style.left = '85%';
+          }, 100);
+        },
+        "preloadImage": function preloadImage(src, successFn) {
+          var image = new Image();
+          image.src = src;
 
-      image.onerror = function (error) {
-        successFn && successFn(src);
-      };
-    },
-    "preloadImages": function preloadImages(srcs, doneFn, progressFn) {
-      var _this2 = this;
+          image.onload = function() {
+            successFn && successFn(src);
+          };
 
-      if (!Array.isArray(srcs)) {
-        console.log('第一个参数只能是一个数组');
-      } else {
-        var allCount = srcs.length;
-        var doneCount = 0;
-        srcs.forEach(function (srcItem) {
-          _this2.preloadImage(srcItem, function () {
-            doneCount++;
-            progressFn && progressFn(Math.ceil(100 * doneCount / allCount));
+          image.onerror = function(error) {
+            successFn && successFn(src);
+          };
+        },
+        "preloadImages": function preloadImages(srcs, doneFn, progressFn) {
+          var _this2 = this;
 
-            if (doneCount === allCount) {
-              doneFn && doneFn();
-            }
+          if (!Array.isArray(srcs)) {
+            console.log('第一个参数只能是一个数组');
+          } else {
+            var allCount = srcs.length;
+            var doneCount = 0;
+            srcs.forEach(function(srcItem) {
+              _this2.preloadImage(srcItem, function() {
+                doneCount++;
+                progressFn && progressFn(Math.ceil(100 * doneCount / allCount));
+
+                if (doneCount === allCount) {
+                  doneFn && doneFn();
+                }
+              });
+            });
+          }
+        }
+      },
+      "page1": {
+        "data": {
+          "swiper": null,
+          "isCut": false,
+          "isPlaying": false,
+          "timestamp": 1.7976931348623157e+308,
+          "videoSrc": "",
+          "musicIsPlay": true
+        },
+        "created": function created() {
+          var _this3 = this;
+
+          // 初始化Canvas
+          var video = this.query('#videoPlay');
+          var screenshot = this.query('#screenshot');
+          screenshot.style.width = video.videoWidth + 'px';
+          screenshot.style.height = video.videoHeight + 'px'; // 视频播放结束事件
+          // video.addEventListener('ended', () => { //结束
+          //   this.clear()
+          // }, false);
+          // 视频二结束播放事件
+
+          this.query('#videoPlay2').addEventListener('ended', function() {
+            //结束
+            _this3.query('.video-box-2').style.opacity = 0;
+            setTimeout(function() {
+              _this3.query('.video-box-2').style.display = 'none';
+            }, 1000);
+            _this3.query('.video-play-button').style.opacity = 0;
+          }, false);
+        },
+        "play": function play() {
+          var _this4 = this;
+
+          this.query('.show-text').style.display = 'none';
+          this.query('#videoPlay').play();
+          this.$target.style.opacity = 0;
+          setTimeout(function() {
+            _this4.$target.style.display = 'none';
+          }, 1000);
+        },
+        "playVideo": function playVideo() {
+          var _this5 = this;
+
+          // if (Date.parse(new Date()) - this.data.timestamp) {
+          // }
+          this.data.isPlaying = true;
+          this.data.timestamp = new Date();
+          this.query('.video-play-button').style.opacity = 0;
+          this.query('#videoPlay').play();
+          setTimeout(function() {
+            _this5.$el.classList.add('touch');
+          }, 1000);
+        },
+        "pauseVideo": function pauseVideo() {
+          var currentTime = document.getElementsByTagName("video")[0].currentTime;
+          console.log(currentTime);
+          var index = 0;
+
+          if (currentTime > 28 && currentTime < 32) {
+            // 1明信片老牛湾.jpg
+            index = 1;
+            this.data.videoSrc = 'http://demos.run/sxwl/video/video-1.mp4';
+          } else if (currentTime > 44 && currentTime < 47) {
+            // 2明信片碛口古镇
+            index = 2;
+            this.data.videoSrc = 'http://demos.run/sxwl/video/video-2.mp4';
+          } else if (currentTime > 56 && currentTime < 59) {
+            // 3明信片壶口瀑布
+            index = 3;
+            this.data.videoSrc = 'http://demos.run/sxwl/video/video-3.mp4';
+          } else if (currentTime > 64 && currentTime < 68) {
+            // 4明信片鹳雀楼
+            index = 4;
+            this.data.videoSrc = 'http://demos.run/sxwl/video/video-4.mp4';
+          } else if (currentTime > 81 && currentTime < 84) {
+            // 5明信片雁门关
+            index = 5;
+            this.data.videoSrc = 'http://demos.run/sxwl/video/video-5.mp4';
+          } else if (currentTime > 90 && currentTime < 93) {
+            // 6明信片娘子关
+            index = 6;
+            this.data.videoSrc = 'http://demos.run/sxwl/video/video-6.mp4';
+          } else if (currentTime > 96 && currentTime < 99) {
+            // 7明信片平型关
+            index = 7;
+            this.data.videoSrc = 'http://demos.run/sxwl/video/video-7.mp4';
+          } else if (currentTime > 104 && currentTime < 108) {
+            // 8明信片右玉古堡
+            index = 8;
+            this.data.videoSrc = 'http://demos.run/sxwl/video/video-8.mp4';
+          } else if (currentTime > 120 && currentTime < 124) {
+            // 9明信片藏山
+            index = 9;
+            this.data.videoSrc = 'http://demos.run/sxwl/video/video-9.mp4';
+          } else if (currentTime > 132 && currentTime < 135) {
+            // 10明信片通天峡
+            index = 10;
+            this.data.videoSrc = 'http://demos.run/sxwl/video/video-10.mp4';
+          } else if (currentTime > 144 && currentTime < 148) {
+            // 11明信片太行山大峡谷
+            index = 11;
+            this.data.videoSrc = 'http://demos.run/sxwl/video/video-11.mp4';
+          } else if (currentTime > 154 && currentTime < 157) {
+            // 12明信片王莽岭
+            index = 12;
+            this.data.videoSrc = 'http://demos.run/sxwl/video/video-12.mp4';
+          } else if (currentTime > 168 && currentTime < 170) {
+            // 13明信片云丘山
+            index = 13;
+            this.data.videoSrc = 'http://demos.run/sxwl/video/video-13.mp4';
+          } // 快结束了自动播放到完
+
+
+          if (new Date() - this.data.timestamp < 1000) {
+            owo.tool.toast('按住按钮不放继续浏览哦!', {
+              container: $('.rotate-box')[0]
+            });
+          }
+
+          if (this.query('#videoPlay').currentTime > 170) {
+            return;
+          }
+
+          this.data.isPlaying = false;
+          this.$el.classList.remove('touch');
+          this.query('#videoPlay').pause();
+          console.log(index);
+
+          if (index !== 0) {
+            this.screenshot(index);
+          }
+        },
+        "closeVideo": function closeVideo() {
+          var _this6 = this;
+
+          this.query('#videoPlay2').pause();
+          this.query('.video-box-2').style.opacity = 0;
+          setTimeout(function() {
+            _this6.query('.video-box-2').style.display = 'none';
+          }, 1000);
+          this.query('.video-play-button').style.opacity = 0;
+        },
+        "screenshot": function screenshot(index) {
+          var _this7 = this;
+
+          if (this.data.isCut) return;
+          this.data.isCut = true;
+          new Audio("./static/resource/kuaimen.mp3").play(); // 截图
+
+          var showImageBox = this.query('.show-image');
+          var showImage = this.query('.show-image img');
+          showImage.src = "./static/resource/pic-" + index + ".jpg";
+          showImageBox.style.display = 'block';
+          setTimeout(function() {
+            showImage.style.opacity = 1;
+            showImageBox.style.width = '133px';
+            showImageBox.style.height = '75px';
+          }, 20);
+          setTimeout(function() {
+            showImageBox.style.left = '87%';
+            showImageBox.style.bottom = '87%';
+          }, 500);
+          setTimeout(function() {
+            showImageBox.style.opacity = 0;
+          }, 1000); // 截图完毕后归位
+
+          setTimeout(function() {
+            showImageBox.style.display = '';
+            showImageBox.style.width = '';
+            showImageBox.style.height = '';
+            showImage.style.opacity = '';
+            showImageBox.style.opacity = '';
+            showImageBox.style.left = '';
+            showImageBox.style.bottom = '';
+            _this7.data.isCut = false;
+          }, 2000);
+          this.query('.video-play-button').style.opacity = 1;
+        },
+        "clear": function clear() {
+          var _this8 = this;
+
+          this.data.isCut = true;
+          this.$el.classList.remove('touch');
+          this.query('.start-button').style.display = 'none';
+          this.query('.select').style.display = 'block';
+          setTimeout(function() {
+            _this8.query('.select').style.opacity = 1;
+          }, 100);
+        },
+        "share": function share() {
+          owo.tool.toast('长按你喜欢的明信片分享吧!', {
+            container: $('.rotate-box')[0]
           });
-        });
+        },
+        "playVideo2": function playVideo2() {
+          var _this9 = this;
+
+          var video = this.query('#videoPlay2');
+          video.src = this.data.videoSrc;
+          setTimeout(function() {
+            _this9.query('.video-box-2').style.display = 'block';
+            _this9.query('.video-box-2').style.opacity = 1;
+            video.play();
+          }, 0);
+        },
+        "swMusic": function swMusic() {
+          this.data.musicIsPlay = !this.data.musicIsPlay;
+          console.log(this.data.musicIsPlay);
+
+          if (this.data.musicIsPlay) {
+            this.$target.classList.add('turn');
+            this.query('#videoPlay').muted = !this.data.musicIsPlay;
+          } else {
+            this.$target.classList.remove('turn');
+            this.query('#videoPlay').muted = !this.data.musicIsPlay;
+          }
+        }
+      },
+      "page2": {
+        "data": {
+          "swiper": null
+        },
+        "created": function created() {
+          this.data.swiper = new swiperIt(this.query('.swiper-box'), {
+            showSlider: 3,
+            width: 654,
+            height: 368,
+            reverseTouch: true
+          });
+        },
+        "share": function share() {
+          owo.tool.toast('竖屏下点击右上角按钮分享给朋友!', {
+            container: $('.rotate-box')[0]
+          });
+        }
       }
-    }
-  },
-  "page1": {
-    "data": {
-      "swiper": null,
-      "isCut": false,
-      "isPlaying": false,
-      "timestamp": 1.7976931348623157e+308,
-      "videoSrc": ""
-    },
-    "created": function created() {
-      var _this3 = this;
+    };
+  </script>
 
-      // 初始化Canvas
-      var video = this.query('#videoPlay');
-      var screenshot = this.query('#screenshot');
-      screenshot.style.width = video.videoWidth + 'px';
-      screenshot.style.height = video.videoHeight + 'px'; // 视频播放结束事件
+  <script src="./static/js/toast.js" type="text/javascript" charset="UTF-8"></script>
+</body>
 
-      video.addEventListener('ended', function () {
-        //结束
-        _this3.clear();
-      }, false); // 视频二结束播放事件
-
-      this.query('#videoPlay2').addEventListener('ended', function () {
-        //结束
-        _this3.query('.video-box-2').style.opacity = 0;
-        setTimeout(function () {
-          _this3.query('.video-box-2').style.display = 'none';
-        }, 1000);
-        _this3.query('.video-play-button').style.opacity = 0;
-      }, false);
-    },
-    "play": function play() {
-      this.query('#videoPlay').play();
-      this.$target.style.opacity = 0;
-    },
-    "playVideo": function playVideo() {
-      var _this4 = this;
-
-      // if (Date.parse(new Date()) - this.data.timestamp) {
-      // }
-      this.data.isPlaying = true;
-      this.data.timestamp = new Date();
-      this.query('#videoPlay').play();
-      setTimeout(function () {
-        _this4.$el.classList.add('touch');
-      }, 1000);
-    },
-    "pauseVideo": function pauseVideo() {
-      var currentTime = document.getElementsByTagName("video")[0].currentTime;
-      var index = 0;
-
-      if (currentTime < 33) {
-        // 1明信片老牛湾.jpg
-        index = 1;
-        this.data.videoSrc = 'http://demos.run/sxwl/video/video-1.mp4';
-      } else if (currentTime < 43) {
-        // 2明信片碛口古镇
-        index = 2;
-        this.data.videoSrc = 'http://demos.run/sxwl/video/video-2.mp4';
-      } else if (currentTime < 55) {
-        // 3明信片壶口瀑布
-        index = 3;
-        this.data.videoSrc = 'http://demos.run/sxwl/video/video-3.mp4';
-      } else if (currentTime < 65) {
-        // 4明信片鹳雀楼
-        index = 4;
-        this.data.videoSrc = 'http://demos.run/sxwl/video/video-4.mp4';
-      } else if (currentTime < 77) {
-        // 5明信片雁门关
-        index = 5;
-        this.data.videoSrc = 'http://demos.run/sxwl/video/video-5.mp4';
-      } else if (currentTime < 84) {
-        // 6明信片娘子关
-        index = 6;
-        this.data.videoSrc = 'http://demos.run/sxwl/video/video-6.mp4';
-      } else if (currentTime < 95) {
-        // 7明信片平型关
-        index = 7;
-        this.data.videoSrc = 'http://demos.run/sxwl/video/video-7.mp4';
-      } else if (currentTime < 108) {
-        // 8明信片右玉古堡
-        index = 8;
-        this.data.videoSrc = 'http://demos.run/sxwl/video/video-8.mp4';
-      } else if (currentTime < 118) {
-        // 9明信片藏山
-        index = 9;
-        this.data.videoSrc = 'http://demos.run/sxwl/video/video-9.mp4';
-      } else if (currentTime < 127) {
-        // 10明信片通天峡
-        index = 10;
-        this.data.videoSrc = 'http://demos.run/sxwl/video/video-10.mp4';
-      } else if (currentTime < 138) {
-        // 11明信片太行山大峡谷
-        index = 11;
-        this.data.videoSrc = 'http://demos.run/sxwl/video/video-11.mp4';
-      } else if (currentTime < 148) {
-        // 12明信片王莽岭
-        index = 12;
-        this.data.videoSrc = 'http://demos.run/sxwl/video/video-12.mp4';
-      } else if (currentTime < 158) {
-        // 13明信片云丘山
-        index = 13;
-        this.data.videoSrc = 'http://demos.run/sxwl/video/video-13.mp4';
-      } // 快结束了自动播放到完
-
-
-      if (new Date() - this.data.timestamp < 1000) {
-        owo.tool.toast('按住按钮不放继续浏览哦!');
-      }
-
-      if (this.query('#videoPlay').currentTime > 160) {
-        return;
-      }
-
-      this.data.isPlaying = false;
-      this.$el.classList.remove('touch');
-      this.query('#videoPlay').pause();
-      this.screenshot(index);
-    },
-    "closeVideo": function closeVideo() {
-      var _this5 = this;
-
-      this.query('#videoPlay2').pause();
-      this.query('.video-box-2').style.opacity = 0;
-      setTimeout(function () {
-        _this5.query('.video-box-2').style.display = 'none';
-      }, 1000);
-      this.query('.video-play-button').style.opacity = 0;
-    },
-    "screenshot": function screenshot(index) {
-      var _this6 = this;
-
-      if (this.data.isCut) return;
-      this.data.isCut = true;
-      new Audio("./static/resource/kuaimen.mp3").play(); // 截图
-
-      var showImageBox = this.query('.show-image');
-      var showImage = this.query('.show-image img');
-      showImage.src = "./static/resource/pic-" + index + ".jpg";
-      showImageBox.style.display = 'block';
-      setTimeout(function () {
-        showImage.style.opacity = 1;
-        showImageBox.style.width = '133px';
-        showImageBox.style.height = '75px';
-      }, 0);
-      setTimeout(function () {
-        showImageBox.style.left = '87%';
-        showImageBox.style.bottom = '87%';
-      }, 500);
-      setTimeout(function () {
-        showImageBox.style.opacity = 0;
-      }, 1000); // 截图完毕后归位
-
-      setTimeout(function () {
-        showImageBox.style.display = '';
-        showImageBox.style.width = '';
-        showImageBox.style.height = '';
-        showImage.style.opacity = '';
-        showImageBox.style.opacity = '';
-        showImageBox.style.left = '';
-        showImageBox.style.bottom = '';
-        _this6.data.isCut = false;
-      }, 2000);
-      this.query('.video-play-button').style.opacity = 1;
-    },
-    "clear": function clear() {
-      var _this7 = this;
-
-      this.data.isCut = true;
-      this.$el.classList.remove('touch');
-      this.query('.start-button').style.display = 'none';
-      this.query('.select').style.display = 'block';
-      setTimeout(function () {
-        _this7.query('.select').style.opacity = 1;
-      }, 100);
-    },
-    "share": function share() {
-      owo.tool.toast('长按你喜欢的明信片分享吧!');
-    },
-    "playVideo2": function playVideo2() {
-      var _this8 = this;
-
-      var video = this.query('#videoPlay2');
-      video.src = this.data.videoSrc;
-      setTimeout(function () {
-        _this8.query('.video-box-2').style.display = 'block';
-        _this8.query('.video-box-2').style.opacity = 1;
-        video.play();
-      }, 0);
-    }
-  },
-  "page2": {
-    "data": {
-      "swiper": null
-    },
-    "created": function created() {
-      this.data.swiper = new swiperIt(this.query('.swiper-box'), {
-        showSlider: 3,
-        width: 654,
-        height: 368,
-        reverseTouch: true
-      });
-    }
-  }
-};
-</script>
-
-    <script src="./static/js/toast.js" type="text/javascript"  charset="UTF-8"></script>
-  </body>
 </html>

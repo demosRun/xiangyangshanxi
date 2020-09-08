@@ -212,13 +212,14 @@ li {
 
 .page-1 .select {
   position: absolute;
-  left: 8%;
+  left: 0;
   right: 0;
-  bottom: 12%;
+  bottom: 14%;
   margin: 0 auto;
   display: none;
   opacity: 0;
   transition: opacity 1s;
+  z-index: 99;
 }
 
 .page-1 .enter {
@@ -232,6 +233,7 @@ li {
   right: 0;
   bottom: 60px;
   margin: auto;
+  z-index: 9;
 }
 
 .page-1 .video-play-button {
@@ -264,6 +266,95 @@ li {
   width: 100%;
   height: 100%;
 }
+
+.page-1 .show-text {
+  left: -50%;
+  right: -50%;
+  top: 0;
+  margin: auto;
+  position: absolute;
+  height: 100%;
+}
+
+@-webkit-keyframes turn {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  25% {
+    -webkit-transform: rotate(90deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+
+  75% {
+    -webkit-transform: rotate(270deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes turn {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  25% {
+    -webkit-transform: rotate(90deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+
+  75% {
+    -webkit-transform: rotate(270deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.page-1 .music {
+  position: absolute;
+  right: 2%;
+  top: 2%;
+}
+
+.page-1 .turn {
+  -webkit-animation: turn 10s linear infinite;
+          animation: turn 10s linear infinite;
+}
+@-webkit-keyframes flicker {
+  from {
+    opacity: 100%;
+  }
+
+  to {
+    opacity: 20%;
+  }
+}
+
+@keyframes flicker {
+  from {
+    opacity: 100%;
+  }
+
+  to {
+    opacity: 20%;
+  }
+}
+
+[o-animation="flicker"] {
+  -webkit-animation: flicker 2s linear 0s infinite alternate;
+  animation: flicker 2s linear 0s infinite alternate;
+}
+
 .page-2 .share-box {
   position: absolute;
   width: 100%;
@@ -316,6 +407,14 @@ li {
   bottom: 0;
   margin: auto;
   z-index: 9;
+}
+
+.page-2 .info {
+  color: white;
+  position: absolute;
+  top: 67%;
+  width: 100%;
+  text-align: center;
 }
 /* 页面切换动画 */
 .o-page-scaleDown {

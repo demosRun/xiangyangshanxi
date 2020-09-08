@@ -6,11 +6,23 @@
       img.share-button(src="@|share.png|" o-tap="share")
       img.left-button(src="@|left.png|" o-tap="this.data.swiper.prev()")
       img.right-button(src="@|right.png|" o-tap="this.data.swiper.next()")
+      .info(o-animation="flicker") 长按图片保存到手机
       //- 轮播图区域
       .swiper-box
-        img(src="@|swiper-test.png|")
-        img(src="@|swiper-test.png|")
-        img(src="@|swiper-test.png|")
+        img(src="@|swiper-1.jpg|")
+        img(src="@|swiper-2.jpg|")
+        img(src="@|swiper-3.jpg|")
+        img(src="@|swiper-4.jpg|")
+        img(src="@|swiper-5.jpg|")
+        img(src="@|swiper-6.jpg|")
+        img(src="@|swiper-7.jpg|")
+        img(src="@|swiper-8.jpg|")
+        img(src="@|swiper-9.jpg|")
+        img(src="@|swiper-10.jpg|")
+        img(src="@|swiper-11.jpg|")
+        img(src="@|swiper-12.jpg|")
+        img(src="@|swiper-13.jpg|")
+        img(src="@|swiper-14.jpg|")
 </template>
 
 <script>
@@ -24,6 +36,11 @@
         width: 654,
         height: 368,
         reverseTouch: true
+      })
+    },
+    share: function () {
+      owo.tool.toast('竖屏下点击右上角按钮分享给朋友!', {
+        container: $('.rotate-box')[0]
       })
     }
   }
@@ -78,5 +95,12 @@
   bottom: 0;
   margin: auto;
   z-index: 9;
+}
+.info {
+  color: white;
+  position: absolute;
+  top: 67%;
+  width: 100%;
+  text-align: center;
 }
 </style>

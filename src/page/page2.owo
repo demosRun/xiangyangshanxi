@@ -22,7 +22,6 @@
         img(src="@|swiper-11.jpg|")
         img(src="@|swiper-12.jpg|")
         img(src="@|swiper-13.jpg|")
-        img(src="@|swiper-14.jpg|")
 </template>
 
 <script>
